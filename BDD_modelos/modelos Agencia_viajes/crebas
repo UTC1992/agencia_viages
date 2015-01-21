@@ -1,0 +1,151 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     18/01/15 9:57:43                             */
+/*==============================================================*/
+
+
+/*==============================================================*/
+/* Table: AEROLINEAS                                            */
+/*==============================================================*/
+create table AEROLINEAS
+(
+   COD_AERO             int(2) not null auto_increment,
+   NOMBRE_AERO          varchar(50),
+   RUC_AERO             varchar(20),
+   primary key (COD_AERO)
+);
+
+/*==============================================================*/
+/* Table: AVIONES                                               */
+/*==============================================================*/
+create table AVIONES
+(
+   COD_AVI              int(2) not null auto_increment,
+   DESCRIPCION_AVI      varchar(50),
+   TIPO_AVI             varchar(50),
+   PLACA_AVI            varchar(10),
+   primary key (COD_AVI)
+);
+
+/*==============================================================*/
+/* Table: CATEGORIA                                             */
+/*==============================================================*/
+create table CATEGORIA
+(
+   COD_CAT              int(2) not null auto_increment,
+   COD_AVI              int(2),
+   DESCRIPCION_CAT      varchar(50),
+   VALOR_CAT            float(3),
+   primary key (COD_CAT)
+);
+
+/*==============================================================*/
+/* Table: CLIENTE                                               */
+/*==============================================================*/
+create table CLIENTE
+(
+   COD_CLI              int(2) not null auto_increment,
+   CEDULA_CLI           varchar(10),
+   NOMBRE_CLI           varchar(50),
+   APELLIDO_CLI         varchar(50),
+   CIUDAD_CLI           varchar(30),
+   DIRECCION_CLI        varchar(70),
+   TELEFONO_CLI         varchar(10),
+   CELULAR_CLI          varchar(10),
+   CORREO_CLI           varchar(70),
+   primary key (COD_CLI)
+);
+
+/*==============================================================*/
+/* Table: DETALLE_RESERVA                                       */
+/*==============================================================*/
+create table DETALLE_RESERVA
+(
+   COD_DERES            int(2) not null auto_increment,
+   COD_VUE              int(2),
+   COD_RES              int(2),
+   PUESTO_DERES         smallint,
+   CANTIDAD_DERES       numeric(3,0),
+   VALOR_DERES          float(3),
+   primary key (COD_DERES)
+);
+
+/*==============================================================*/
+/* Table: PUESTO                                                */
+/*==============================================================*/
+create table PUESTO
+(
+   COD_PUES             int(2) not null auto_increment,
+   COD_CAT              int(2),
+   NUM_PUES             smallint,
+   primary key (COD_PUES)
+);
+
+/*==============================================================*/
+/* Table: RESERVA                                               */
+/*==============================================================*/
+create table RESERVA
+(
+   COD_RES              int(2) not null auto_increment,
+   COD_CLI              int(2),
+   FECHA_RES            date,
+   ESTADO_RES           varchar(30),
+   primary key (COD_RES)
+);
+
+/*==============================================================*/
+/* Table: USUARIOS                                              */
+/*==============================================================*/
+create table USUARIOS
+(
+   COD_USU              int(2) not null auto_increment,
+   CEDULA_USU           varchar(10),
+   NOMBRE_USU           varchar(50),
+   APELLIDO_USU         varchar(50),
+   CIUDAD_USU           varchar(50),
+   DIRECCION_USU        varchar(70),
+   TELEFONO_USU         varchar(10),
+   CELULAR_USU          varchar(10),
+   CORREO_USU           varchar(70),
+   primary key (COD_USU)
+);
+
+/*==============================================================*/
+/* Table: VUELOS                                                */
+/*==============================================================*/
+create table VUELOS
+(
+   COD_VUE              int(2) not null auto_increment,
+   COD_AVI              int(2),
+   COD_AERO             int(2),
+   NUM_VUE              smallint,
+   FECHA_VUE            date,
+   HORASALIDA_VUE       time,
+   HORALLEGADA_VUE      time,
+   ORIGEN_VUE           varchar(50),
+   DESTINO_VUE          varchar(50),
+   PUERTAEMBARQUE_VUE   varchar(50),
+   primary key (COD_VUE)
+);
+
+alter table CATEGORIA add constraint FK_RELATIONSHIP_3 foreign key (COD_AVI)
+      references AVIONES (COD_AVI) on delete cascade on update cascade;
+
+alter table DETALLE_RESERVA add constraint FK_RELATIONSHIP_4 foreign key (COD_VUE)
+      references VUELOS (COD_VUE) on delete cascade on update cascade;
+
+alter table DETALLE_RESERVA add constraint FK_RELATIONSHIP_6 foreign key (COD_RES)
+      references RESERVA (COD_RES) on delete cascade on update cascade;
+
+alter table PUESTO add constraint FK_RELATIONSHIP_5 foreign key (COD_CAT)
+      references CATEGORIA (COD_CAT) on delete cascade on update cascade;
+
+alter table RESERVA add constraint FK_RELATIONSHIP_7 foreign key (COD_CLI)
+      references CLIENTE (COD_CLI) on delete cascade on update cascade;
+
+alter table VUELOS add constraint FK_RELATIONSHIP_1 foreign key (COD_AERO)
+      references AEROLINEAS (COD_AERO) on delete cascade on update cascade;
+
+alter table VUELOS add constraint FK_RELATIONSHIP_2 foreign key (COD_AVI)
+      references AVIONES (COD_AVI) on delete cascade on update cascade;
+
