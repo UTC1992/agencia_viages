@@ -152,10 +152,11 @@
                         <li><a class="ajax-link" href="<?=URL::to('registroCliente'); ?>">
                             <i class="glyphicon glyphicon-user"></i><span>Reservar</span></a>
                         </li>
+                        <!--
                         <li><a class="ajax-link" href="<?=URL::to('#'); ?>">
                             <i class="glyphicon glyphicon-user"></i><span>usuarios</span></a>
                         </li>
-                        <!--
+                        
                         <li><a class="ajax-link" href="">
                             <i class="glyphicon glyphicon-folder-open"></i><span> Tareas</span></a>
                         </li>

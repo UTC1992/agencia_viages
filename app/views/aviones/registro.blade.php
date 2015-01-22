@@ -6,7 +6,7 @@
 		}
 	</style>
 
-
+ <script type="text/javascript" src="js/validacion/validacion_avionData.js"></script>
 	<div class="container well">
 		<div class="row">
 			<div class="col-xs-12">
@@ -20,7 +20,7 @@
 						Descripción:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripción del avion"  requered autofocus >
+						<input class="form-control" type="text" name="descripcion" id="descripcion" onkeypress="return sololetras(event);" placeholder="Descripción del avion"  requered autofocus >
 					</div>
 				</div>
 								
@@ -29,7 +29,7 @@
 						Tipo:
 					</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text" name="tipo" id="tipo" placeholder="Tipo"  >
+						<input class="form-control" type="text" name="tipo" id="tipo" placeholder="Tipo" onkeypress="return sololetras(event);" >
 					</div>
 				</div>
 				
@@ -46,7 +46,7 @@
 					<label class="col-sm-2 control-label" for="formGroup">
 					</label>
 					<div class="col-sm-4">
-						<button class="btn btn-primary btn-lg" type="submit">
+						<button class="btn btn-primary btn-lg" type="submit" onclick="validarformulario();">
 							<span class="glyphicon glyphicon-floppy-saved"></span>
 							Guardar
 						</button>

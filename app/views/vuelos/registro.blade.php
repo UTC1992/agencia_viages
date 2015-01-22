@@ -5,7 +5,7 @@
 		}
 	</style>
 
-
+ <script type="text/javascript" src="js/validacion/validacion_vuelosData.js"></script>
 	<div class="container">
 		<div class="row">
 			<center>
@@ -14,14 +14,14 @@
 			</div>
 			</center>
 			<br><br>
-			<form class="form-horizontal" id="vueloData" name="vueloData" action="registrarVuelo" method="post" >
+			<form class="form-horizontal" id="vueloData" name="vueloData" action="registrarVuelo" method="post" onsubmit="return validarformulario();">
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="formGroup">
 						Número:
 					</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text" name="numero" id="numero" placeholder="Número de vuelo"  requered autofocus >
+						<input class="form-control" type="text" name="numero" id="numero" placeholder="Número de vuelo" onkeypress="return solonumeros(event);" requered autofocus >
 					</div>
 				</div>
 
@@ -40,7 +40,7 @@
 						Hora de Salida:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="salida" id="salida" placeholder="hora-min-seg" >
+						<input class="form-control" type="text" name="hora_salida" id="hora_salida" placeholder="hora-min-seg" >
 					</div>
 				</div>
 				
@@ -49,7 +49,7 @@
 						Hora de Llegada:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="llegada" id="llegada" placeholder="hora-min-seg" >
+						<input class="form-control" type="text" name="hora_llegada" id="hora_llegada" placeholder="hora-min-seg" >
 					</div>
 				</div>
 
@@ -58,7 +58,7 @@
 						Origen:
 					</label>
 					<div class="col-sm-2">
-						<select class="form-control" name="origen">
+						<select class="form-control" name="origen" id="origen" onkeypress="return sololetras(event);">
 							<option>Seleccione</option>
 							<option>Latacunga</option>
 							<option>Ambato</option>
@@ -74,7 +74,7 @@
 						Destino:
 					</label>
 					<div class="col-sm-2">
-						<select class="form-control" name="destino">
+						<select class="form-control" name="destino" id="destino" onkeypress="return sololetras(event);">
 							<option>Seleccione</option>
 							<option>Latacunga</option>
 							<option>Ambato</option>
@@ -90,7 +90,7 @@
 						Puerta de embarque:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="embarque" id="embarque" placeholder="Embarque" >
+						<input class="form-control" type="text" name="puerta_embarque" id="puerta_embarque" placeholder="Embarque" >
 					</div>
 				</div>
 		
@@ -103,7 +103,8 @@
 					 ?>
 					<div class="col-sm-2">
 							@if($aerolineas)
-						<select class="form-control">
+						<select class="form-control" name="aerolinea_id" id='aerolinea_id'>
+							<option>Seleccione</option>
 							@foreach($aerolineas as $aerolinea)
 							<option>{{$aerolinea->nombre}}</option>
 							@endforeach
@@ -124,7 +125,8 @@
 					 ?>
 					<div class="col-sm-2">
 							@if($aviones)
-						<select class="form-control">
+						<select class="form-control" name="avion_id" id="avion_id" >
+							<option>Seleccione</option>
 							@foreach($aviones as $avion)
 							<option>{{$avion->descripcion}}</option>
 							@endforeach
@@ -137,24 +139,23 @@
 				</div>
 
 				<br />
-
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="formGroup">
-					</label>
-					<div class="col-sm-4">
-						<button class="btn btn-primary btn-lg" type="submit">
-							<span class="glyphicon glyphicon-floppy-saved"></span>
-							Guardar
-						</button>
-						<a href="/" class="btn btn-danger btn-lg" type="button" >
-							<span class="glyphicon glyphicon-remove-circle"></span>
-							Cancelar
-						</a>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="formGroup">
+						</label>
+						<div class="col-sm-4">
+							<button class="btn btn-primary btn-lg" type="submit" onclick="validarformulario();">
+								<span class="glyphicon glyphicon-floppy-saved"></span>
+								Guardar
+							</button>
+							<a href="vuelos" class="btn btn-danger btn-lg" type="button" >
+								<span class="glyphicon glyphicon-remove-circle"></span>
+								Cancelar
+							</a>
+						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-	</div>
 
 	
 

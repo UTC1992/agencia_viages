@@ -27,7 +27,7 @@
 			if ($validacion->fails()) 
 			{
 				# code...
-				return Redirect::to('aerolineas')->with('status','no_create');
+				return Redirect::to('registroAerolinea')->with('status','no_create');
 			}
 
 			$aerolinea = new Aerolinea;

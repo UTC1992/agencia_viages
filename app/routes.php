@@ -94,3 +94,9 @@ Route::get('registroVuelo',function(){return View::make('vuelos.registro');});
 Route::post('registrarVuelo','VueloController@postCreate');
 //mostrar vuelos
 Route::controller('vuelos','VueloController');
+//eliminar avion
+Route::get('eliminarVuelo/{id}','VueloController@getDelete');
+//obtener datos para actualizar
+Route::controller('vuelo/getvuelo','getvueloController');
+//actualizar
+Route::post('actualizarVuelo','VueloController@postUpdate');

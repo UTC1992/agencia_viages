@@ -23,7 +23,7 @@
 			<p>Introdusca usuario y contraseña para continuar.</p>
 			@endif
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Correo Electrónico" name="correo" id="correo"  requered autofocus>
+				<input type="email" class="form-control" placeholder="Correo Electrónico" name="correo" id="correo"  requered autofocus>
 			</div>
 			<div class="form-group">
 				<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" requered>

@@ -5,11 +5,16 @@
 		return false;
 		}
 		else
-		if (ced.length!=10) {
-		document.getElementById('cedula').innerHTML="Ingrese 10 Digitos";
-		alert("Ingrese 10 digitos");
-		return false;
-	}
+		if (ced.length>10) 
+		{
+			alert("Ingrese 10 digitos");
+			return false;
+		}
+		else
+		if (ValidarCedula(ced)==false) {
+		alert("Cedula mal ingresada...");
+			return false;
+		}
 	var nom=document.userdata.nombre.value;
 			if (nom=="" )
 			{
@@ -18,56 +23,89 @@
 				return false;
 			}
 
-				//VALIDAR CAMPO DE TEXTO APELLIDO/////////////////////////////////////////////		
-			var ape=document.userdata.apellido.value;
-			if (ape=="" )
-			{
-				document.getElementById('apellidos').innerHTML="Ingrese su Apellido por favor..!!"; //para coger el div e imprimir en pantalla el sms
-				alert("Ingrese sus apellidos");
-				return false;
-			}
+//VALIDAR CAMPO DE TEXTO APELLIDO/////////////////////////////////////////////		
+	var ape=document.userdata.apellido.value;
+		if (ape=="" )
+		{
+			alert("Ingrese sus apellidos");
+			return false;
+		}
 
-		var tlf=document.userdata.telefono.value; 
-		if (tlf==""){
-		document.getElementById('telefono').innerHTML="Ingrese telefono"; //para coger el div e imprimir en pantalla el sms
-		alert("Ingrese su telefono");
-		return false;
+	var tlf=document.userdata.telefono.value; 
+		if (tlf=="")
+		{
+			alert("Ingrese su telefono");
+			return false;
 		}
 		else
-		if (tlf.length!=9) {
-		document.getElementById('telefono').innerHTML="Ingrese 9 Digitos";
-		alert("Ingrese 9 digitos");
-		return false;
-	}
+		if (tlf.length < 9) 
+		{
+			alert("Ingrese 9 digitos");
+			return false;
+		}
+		if (tlf.length > 9) 
+		{
+			alert("Ingrese 9 digitos");
+			return false;
+		}
 	var cel=document.userdata.celular.value; 
-		if (cel==""){
-		document.getElementById('celular').innerHTML="Ingrese celular"; //para coger el div e imprimir en pantalla el sms
-		alert("Ingrese su celular");
-		return false;
+		if (cel=="")
+		{
+			alert("Ingrese su celular");
+			return false;
 		}
 		else
-		if (cel.length!=10) {
-		document.getElementById('celular').innerHTML="Ingrese 10 Digitos";
-		alert("El celular debe contener 10 digitos");
-		return false;
-	}
+		if (cel.length > 10) {
+			alert("El celular debe contener 10 digitos");
+			return false;
+		}else
+		if (cel.length < 10) {
+			alert("El celular debe contener 10 digitos");
+			return false;
+		}
 
 	var ciu=document.userdata.ciudad.value;
 			if (ciu=="" )
 			{
-				//document.getElementById('nombres').innerHTML="Ingrese su Nombre por favor..!!"; //para coger el div e imprimir en pantalla el sms
 				alert("Ingrese la ciudad");
 				return false;
 			}
 	var dir=document.userdata.direccion.value;
 			if (dir=="" )
 			{
-				//document.getElementById('nombres').innerHTML="Ingrese su Nombre por favor..!!"; //para coger el div e imprimir en pantalla el sms
 				alert("Ingrese su dirección");
 				return false;
 			}
-return true;
+//return true;
 }
+
+
+function ValidarCedula(ced){ 
+			var i;
+ 			var cedula;
+ 			var acumulado;
+ 			cedula=ced;
+ 			var instancia;
+ 			acumulado=0;
+ 			for (i=1;i<=9;i++)
+ 			{
+  				if (i%2!=0)
+  				{
+   					instancia=cedula.substring(i-1,i)*2;
+   					if (instancia>9) instancia-=9;
+  				}
+  				else instancia=cedula.substring(i-1,i);
+  				acumulado+=parseInt(instancia);
+ 			}
+ 			while (acumulado>0)
+  				acumulado-=10;
+ 			if (cedula.substring(9,10)!=(acumulado*-1))
+ 			{
+  				return false; // cedula mal ingresada
+ 			}
+		return true;  // cedula bien ingresada
+		}
+
 
 function solonumeros(e){
 		key=e.keyCode || e.which;

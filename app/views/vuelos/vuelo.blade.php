@@ -68,7 +68,7 @@
         <th>Destino</th>
         <th>Embarque</th>
         <th>Aerolínea</th>
-        <th>Avion</th>
+        <th>Avión</th>
         <th>Operaciones</th>
     </tr>
     </thead>
@@ -87,9 +87,13 @@
         <td class="center">{{$vuelo->origen}}</td>
         <td class="center">{{$vuelo->destino}}</td>
         <td class="center">{{$vuelo->puerta_embarque}}</td>
-        <td class="center"></td>
-        <td class="center"></td>
-        <td class="center"></td>
+        <?php 
+            $aerolineas = DB::table('aerolineas')->where('id',$vuelo->aerolinea_id)->first();
+           
+            $aviones = DB::table('aviones')->where('id',$vuelo->avion_id)->first();
+         ?>
+        <td class="center">{{$aerolineas->nombre}}</td>
+        <td class="center">{{$aviones->descripcion}}</td>
         <!--<td class="center">
             <span class="label-success label label-default">Active</span>
         </td>
@@ -127,110 +131,141 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-pencil"></i>Editar datos del Cliente 
+        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-pencil"></i>Editar datos del Vuelo 
         </h4>
       </div>
       <div class="modal-body">
             
     <!--formulario inicio-->
-        
-        <div class="container">
+            <div class="container">
         <div class="row">
-            <br><br>
-            <form class="form-horizontal" id="vueloData" name="clienteData" action="actualizarCliente" method="post" >
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup">
-                                Cédula:
-                            </label>
-                            <div class="col-sm-2">
-                                <input class="form-control" type="text" name="cedula_edit" id="cedula" placeholder="Tu cédula"  >
-                            </div>
-                        </div>
+            <form class="form-horizontal" id="vueloData" name="vueloData" action="actualizarVuelo" method="post" >
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup">
-                                Nombres:
-                            </label>
-                            <div class="col-sm-4">
-                                <input class="form-control" type="text" name="nombres_edit" id="nombres" placeholder="Tus nombres" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup">
-                                Apellidos:
-                            </label>
-                            <div class="col-sm-4">
-                                <input class="form-control" type="text" name="apellidos_edit" id="apellidos" placeholder="Tus apellidos" >
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup">
-                                Ciudad:
-                            </label>
-                            <div class="col-sm-4">
-                                <input class="form-control" type="text" name="ciudad_edit" id="ciudad" placeholder="Tu ciudad" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup">
-                                Dirección:
-                            </label>
-                            <div class="col-sm-4">
-                                <input class="form-control" type="text" name="direccion_edit" id="direccion" placeholder="Tu dirección" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup" id="tel">
-                                Teléfono:
-                            </label>
-                            <div class="input-group col-sm-2">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                <input class="form-control" type="text" name="telefono_edit" id="telefono" placeholder="Tu teléfono" >
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup" id="tel">
-                                Celular:
-                            </label>
-                            <div class="input-group col-sm-2">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                                <input class="form-control" type="text" name="celular_edit" id="celular" placeholder="Tu celular" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup" id="tel">
-                                Email:
-                            </label>
-                            <div class="input-group col-sm-2">
-                                <span class="input-group-addon">@</span>
-                                <input class="form-control" type="text" name="correo_edit" id="correo" placeholder="Tu email">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="formGroup">
-                                Password:
-                            </label>
-                            <div class="col-sm-2">
-                                <input class="form-control" type="password" name="password" id="nombre" placeholder="Una contraseña">
-                            </div>
-                        </div>
-
-                        <br />
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Número:
+                    </label>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="text" name="numero_edit" id="numero_edit" placeholder="Número de vuelo"  requered autofocus >
+                    </div>
                 </div>
-            </div>        
-    
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Fecha:
+                    </label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" name="fecha_edit" id="fecha" placeholder="año-mes-dia" >
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Hora de Salida:
+                    </label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" name="hora_salida_edit" id="hora_salida" placeholder="hora-min-seg" >
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Hora de Llegada:
+                    </label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" name="hora_llegada_edit" id="hora_llegada" placeholder="hora-min-seg" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Origen:
+                    </label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="origen_edit">
+                            <option>Seleccione</option>
+                            <option>Latacunga</option>
+                            <option>Ambato</option>
+                            <option>Quito</option>
+                            <option>Guayaquil</option>
+                            <option>Cuenca</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Destino:
+                    </label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="destino_edit">
+                            <option>Seleccione</option>
+                            <option>Latacunga</option>
+                            <option>Ambato</option>
+                            <option>Quito</option>
+                            <option>Guayaquil</option>
+                            <option>Cuenca</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Puerta de embarque:
+                    </label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" name="puerta_embarque_edit" id="puerta_embarque" placeholder="Embarque" >
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Aerolínea:
+                    </label>
+                    <?php 
+                        $aerolineas=DB::table('aerolineas')->get();     
+                     ?>
+                    <div class="col-sm-2">
+                            @if($aerolineas)
+                        <select class="form-control" name="aerolinea_id_edit">
+                            @foreach($aerolineas as $aerolinea)
+                            <option>{{$aerolinea->nombre}}</option>
+                            @endforeach
+                            @else
+                        <select class="form-control" disabled>
+                            <option>No datos</option>
+                            @endif
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="formGroup">
+                        Avión:
+                    </label>
+                    <?php 
+                        $aviones=DB::table('aviones')->get();       
+                     ?>
+                    <div class="col-sm-2">
+                            @if($aviones)
+                        <select class="form-control" name="avion_id_edit">
+                            @foreach($aviones as $avion)
+                            <option>{{$avion->descripcion}}</option>
+                            @endforeach
+                            @else
+                        <select class="form-control" disabled>
+                            <option>No datos</option>
+                            @endif
+                        </select>
+                    </div>
+                </div>
 
     <!--formulario fin-->
-      </div>
-      <div class="modal-footer">
+      
+
+      <div>
         <h4 class="loadingDatos"><span id="load"> 
         <img class='cargandoEditar' src="{{ asset('img/loading-icons/loading3.gif')}}"> Cargando...</span></h4>
         <button class="btn btn-primary btn-ln" type="submit">
@@ -266,14 +301,15 @@ $(document).ready(function() {
     $.post(faction, fdata, function(json) {
         if (json.success) {
             $('#vueloData input[name="vuelo_id"]').val(json.id);
-            $('#vueloData input[name="cedula_edit"]').val(json.cedula);
-            $('#vueloData input[name="nombres_edit"]').val(json.nombre);
-            $('#vueloData input[name="apellidos_edit"]').val(json.apellido);
-            $('#vueloData input[name="ciudad_edit"]').val(json.ciudad);
-            $('#vueloData input[name="direccion_edit"]').val(json.direccion);
-            $('#vueloData input[name="telefono_edit"]').val(json.telefono);
-            $('#vueloData input[name="celular_edit"]').val(json.celular);
-            $('#vueloData input[name="correo_edit"]').val(json.correo);
+            $('#vueloData input[name="numero_edit"]').val(json.numero);
+            $('#vueloData input[name="fecha_edit"]').val(json.fecha);
+            $('#vueloData input[name="hora_salida_edit"]').val(json.hora_salida);
+            $('#vueloData input[name="hora_llegada_edit"]').val(json.hora_llegada);
+            $('#vueloData input[name="origen_edit"]').val(json.origen);
+            $('#vueloData input[name="destino_edit"]').val(json.destino);
+            $('#vueloData input[name="puerta_embarque_edit"]').val(json.puerta_embarque);
+            $('#vueloData input[name="aerolinea_id_edit"]').val(json.aerolinea_id);
+            $('#vueloData input[name="avion_id_edit"]').val(json.avion_id);
 
             $('#load').hide();
             

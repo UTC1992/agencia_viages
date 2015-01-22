@@ -5,7 +5,7 @@
 		}
 	</style>
 
-
+ <script type="text/javascript" src="js/validacion/validacion_aerolineaData.js"></script>
 	<div class="container well">
 		<div class="row">
 			<div class="col-xs-12">
@@ -36,7 +36,7 @@
 					<label class="col-sm-2 control-label" for="formGroup">
 					</label>
 					<div class="col-sm-4">
-						<button class="btn btn-primary btn-lg" type="submit">
+						<button class="btn btn-primary btn-lg" type="submit" onclick="validarformulario();" >
 							<span class="glyphicon glyphicon-floppy-saved"></span>
 							Guardar
 						</button>

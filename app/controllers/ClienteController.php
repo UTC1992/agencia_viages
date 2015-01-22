@@ -33,7 +33,7 @@
 			if ($validacion->fails()) 
 			{
 				# code...
-				return Redirect::to('/')->with('status','no_create');
+				return Redirect::to('registroCliente')->with('status','no_create');
 			}
 
 

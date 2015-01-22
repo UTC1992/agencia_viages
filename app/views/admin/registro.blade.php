@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	
+@include('includes.header_cliente')
 	<style type="text/css">
 		#tel{
 			margin-right: 16px;
 		}
 	</style>
+ <script type="text/javascript" src="js/validacion/validacion_adminData.js"></script>
 </head>
 <body>
-	<div class="container well">
+	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
 				<h2>Registro de Usuarios</h2>
 			</div>
 			<br><br>
-			<form class="form-horizontal" id="adminData" name="adminData" action="registrarAdmin" method="post" >
+			<form class="form-horizontal" id="adminData" name="adminData" action="registrarAdmin" method="post" onsubmit="return validarformulario();">
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="formGroup">
 						Cédula:
 					</label>
 					<div class="col-sm-2">
-						<input class="form-control" type="text" name="cedula" id="formGroup" placeholder="Tu cédula" >
+						<input class="form-control" type="text" name="cedula" id="cedula" placeholder="Tu cédula" onkeypress="return solonumeros(event);" requered autofocus>
 					</div>
 				</div>
 
@@ -35,7 +29,7 @@
 						Nombres:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="nombres" id="formGroup" placeholder="Tus nombres">
+						<input class="form-control" type="text" name="nombres" id="formGroup" placeholder="Tus nombres" onkeypress="return sololetras(event);">
 					</div>
 				</div>
 
@@ -44,7 +38,7 @@
 						Apellidos:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="apellidos" id="formGroup" placeholder="Tus apellidos">
+						<input class="form-control" type="text" name="apellidos" id="formGroup" placeholder="Tus apellidos" onkeypress="return sololetras(event);">
 					</div>
 				</div>
 				
@@ -53,7 +47,7 @@
 						Ciudad:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="ciudad" id="formGroup" placeholder="Tu ciudad">
+						<input class="form-control" type="text" name="ciudad" id="formGroup" placeholder="Tu ciudad" onkeypress="return sololetras(event);">
 					</div>
 				</div>
 
@@ -72,7 +66,7 @@
 					</label>
 					<div class="input-group col-sm-2">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-						<input class="form-control" type="text" name="telefono" id="formGroup" placeholder="Tu teléfono">
+						<input class="form-control" type="text" name="telefono" id="formGroup" placeholder="Tu teléfono" onkeypress="return solonumeros(event);">
 					</div>
 				</div>
 				
@@ -82,7 +76,7 @@
 					</label>
 					<div class="input-group col-sm-2">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-						<input class="form-control" type="text" name="celular" id="formGroup" placeholder="Tu celular">
+						<input class="form-control" type="text" name="celular" id="formGroup" placeholder="Tu celular" onkeypress="return solonumeros(event);">
 					</div>
 				</div>
 
@@ -92,7 +86,7 @@
 					</label>
 					<div class="input-group col-sm-2">
 						<span class="input-group-addon">@</span>
-						<input class="form-control" type="text" name="correo" id="formGroup" placeholder="Tu email">
+						<input class="form-control" type="email" name="correo" id="formGroup" placeholder="Tu email">
 					</div>
 				</div>
 
@@ -111,11 +105,11 @@
 					<label class="col-sm-2 control-label" for="formGroup">
 					</label>
 					<div class="col-sm-4">
-						<button class="btn btn-success btn-lg" type="submit">
+						<button class="btn btn-success btn-lg" type="submit" onclick="validarformulario();">
 							<span class="glyphicon glyphicon-floppy-saved"></span>
 							Guardar
 						</button>
-						<a href="/" class="btn btn-danger btn-lg" type="button" >
+						<a href="administrar" class="btn btn-danger btn-lg" type="button" >
 							<span class="glyphicon glyphicon-remove-circle"></span>
 							Cancelar
 						</a>
@@ -130,3 +124,5 @@
 	<script type="js/bootstrap.js"></script>
 </body>
 </html>
+
+@include('includes.footer')

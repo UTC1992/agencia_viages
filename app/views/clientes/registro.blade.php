@@ -7,6 +7,7 @@
 		}
 	</style>
 
+ <script type="text/javascript" src="js/validacion/validacion_clienteData.js"></script>
 
 	<div class="container well">
 		<div class="row">
@@ -14,7 +15,7 @@
 				<h3>Registrece por favor:</h3>
 			</div>
 			<br><br>
-			<form class="form-horizontal" id="clientedata" name="clientedata" action="registrarCliente" method="post" onsubmit="return validarformulario();">
+			<form class="form-horizontal" id="clienteData" name="clienteData" action="registrarCliente" method="post" onsubmit="return validarformulario();">
 
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="formGroup">
@@ -30,7 +31,7 @@
 						Nombres:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="nombres" id="nombres" placeholder="Tus nombres" onkeypress="return sololetras(event)">
+						<input class="form-control" type="text" name="nombres" id="nombre" placeholder="Tus nombres" onkeypress="return sololetras(event)">
 					</div>
 				</div>
 
@@ -39,7 +40,7 @@
 						Apellidos:
 					</label>
 					<div class="col-sm-4">
-						<input class="form-control" type="text" name="apellidos" id="apellidos" placeholder="Tus apellidos" onkeypress="return sololetras(event)">
+						<input class="form-control" type="text" name="apellidos" id="apellido" placeholder="Tus apellidos" onkeypress="return sololetras(event)">
 					</div>
 				</div>
 				
@@ -106,7 +107,7 @@
 					<label class="col-sm-2 control-label" for="formGroup">
 					</label>
 					<div class="col-sm-4">
-						<button class="btn btn-primary btn-lg" type="submit">
+						<button class="btn btn-primary btn-lg" type="submit" onclick="validarformulario();">
 							<span class="glyphicon glyphicon-floppy-saved"></span>
 							Guardar
 						</button>

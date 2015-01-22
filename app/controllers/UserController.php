@@ -33,7 +33,7 @@
 			if ($validacion->fails()) 
 			{
 				# code...
-				return Redirect::to('administrar')->with('status','ok_create');
+				return Redirect::to('registroAdmin')->with('status','ok_create');
 			}
 
 			$usuario = new User;
@@ -101,7 +101,7 @@
 			if ($validacion->fails()) 
 			{
 				# code...
-				return Redirect::to('usuarios')->with('status','no_create');
+				return Redirect::to('registroUsers')->with('status','no_create');
 			}
 
 			$usuario = new User;

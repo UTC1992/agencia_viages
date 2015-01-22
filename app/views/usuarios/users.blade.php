@@ -121,53 +121,107 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-pencil"></i>Editar datos del Participante 
+        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-pencil"></i>Editar datos del Usuario 
         </h4>
       </div>
       <div class="modal-body">
             
             <!--formulario inicio-->
         
-            <div class="row">
-            <form id="formEdit"  action="actualizarUser" method="post">
-        <label>Ingrese los siguientes datos:</label>
-        <br>
+            <div class="container">
+        <div class="row">
+            <br><br>
+            <form class="form-horizontal" id="formEdit" name="userData" action="actualizarUser" method="post" >
 
-        <table>
-            <tr>
-                <td><label>Cédula:</label></td>
-                <td><input type="text" name="cedula_edit" value="" placeholder="Tu cédula"></td>
-            </tr>
-            <tr>
-                <td><label>Nombre:</label></td>
-                <td><input type="text" name="nombres_edit" value="" placeholder="Tu nombre"></td>
-            </tr>
-            <tr>
-                <td><label>Apellido:</label></td>
-                <td><input type="text" name="apellidos_edit" value="" placeholder="Tu Apellido"></td>
-            </tr>
-            <tr>
-                <td><label>Ciudad:</label></td>
-                <td><input type="text" name="ciudad_edit" value="" placeholder="Tu ciudad"></td>
-            </tr>
-            <tr>
-                <td><label>Dirección:</label></td>
-                <td><input type="text" name="direccion_edit" value="" placeholder="Tu Dirección"></td>
-            </tr>
-            <tr>
-                <td><label>Teléfono:</label></td>
-                <td><input type="text" name="telefono_edit" value="" placeholder="Tu teléfono"></td>
-            </tr>
-            <tr>
-                <td><label>Celular:</label></td>
-                <td><input type="text" name="celular_edit" value="" placeholder="Tu celular"></td>
-            </tr>
-            <tr>
-                <td><label>Correo:</label></td>
-                <td><input type="text" name="correo_edit" value="" placeholder="Tu correo"></td>
-            </tr>
-        </table>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup">
+                                Cédula:
+                            </label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" name="cedula_edit" id="cedula" placeholder="Tu cédula"  >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup">
+                                Nombres:
+                            </label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="nombres_edit" id="nombres" placeholder="Tus nombres" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup">
+                                Apellidos:
+                            </label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="apellidos_edit" id="apellidos" placeholder="Tus apellidos" >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup">
+                                Ciudad:
+                            </label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="ciudad_edit" id="ciudad" placeholder="Tu ciudad" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup">
+                                Dirección:
+                            </label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" name="direccion_edit" id="direccion" placeholder="Tu dirección" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup" id="tel">
+                                Teléfono:
+                            </label>
+                            <div class="input-group col-sm-2">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                <input class="form-control" type="text" name="telefono_edit" id="telefono" placeholder="Tu teléfono" >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup" id="tel">
+                                Celular:
+                            </label>
+                            <div class="input-group col-sm-2">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                <input class="form-control" type="text" name="celular_edit" id="celular" placeholder="Tu celular" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup" id="tel">
+                                Email:
+                            </label>
+                            <div class="input-group col-sm-2">
+                                <span class="input-group-addon">@</span>
+                                <input class="form-control" type="text" name="correo_edit" id="correo" placeholder="Tu email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="formGroup">
+                                Password:
+                            </label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="password" name="password" id="nombre" placeholder="Una contraseña">
+                            </div>
+                        </div>
+
+                        <br />
+                </div>
+            </div>        
     
+
 
     <!--formulario fin-->
       </div>
